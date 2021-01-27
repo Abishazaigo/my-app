@@ -1,7 +1,25 @@
 import './Table.css';
+import Tablerow from './Tablerow';
 function Table(){
+    const employee = [
+        {
+            name: "Abisha", 
+            designation: "Trainee developer", 
+            date_of_joining: "14.12.2021"
+        },
+        {
+            name: "Praba", 
+            designation: "Trainee developer", 
+            date_of_joining: "14.12.2021"
+        },
+        { 
+            name: "Reeshma", 
+            designation: "Trainee developer", 
+            date_of_joining: "14.12.2021"
+        }
+    ];
     return (
-        <table class="center">
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -10,17 +28,18 @@ function Table(){
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Abisha</td>
-                    <td>Trainee developer</td>
-                    <td>14.12.2021</td>
-                </tr>
-                <tr>
-                    <td>Praba</td>
-                    <td>Trainee developer</td>
-                    <td>14.12.2021</td>
-                </tr>
+        
+                {
+                    employee.map(
+                        (emp,key) => (
+                            <Tablerow key={key} name={emp.name} designation={emp.designation} doj={emp.date_of_joining} />
+                        )
+                    )
+                }
             </tbody>
+            <tfoot>
+
+            </tfoot>
         </table>
     )
 }
