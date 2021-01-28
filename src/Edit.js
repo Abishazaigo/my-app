@@ -1,13 +1,24 @@
 import {useState} from 'react';
 import Tablerow from './Tablerow';
-function Edit(){
+function Edit(props){
     const [name, setName] = useState(" ");
     const [designation, setDesignation] = useState(" ");
     const [doj, setDoj] = useState(" ");
-    const employees = [];
+    function show(){
+    const employ = {
+        name:name,
+        designation:designation,
+        doj:doj
+    };
+    props.setEmployee((previousState) =>{
+        return [...previousState,employ];
+    }
+
+    );
+}
+
     return(
-        <div> 
-        <form>
+  <div> 
             <div>
                 <label>Name:</label>
             </div>
@@ -27,25 +38,9 @@ function Edit(){
                 <input type="date" id="doj" onChange={(e) => setDoj(e.target.value)}/>
             </div>
             <div>
-                <button>SUBMIT</button>
+                <button onClick={(e) => show()}>SUBMIT</button>
             </div>
-
-        </form> 
-        <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Designation</th>
-                <th>Date of joining</th>
-            </tr>
-        </thead>
-        <tbody>                  
-            <tr><td>{name}</td><td>{designation}</td><td>{doj}</td></tr>
-        </tbody>
-        <tfoot>
-
-        </tfoot>
-    </table>
+ 
     </div>    
     )
 }
