@@ -1,23 +1,6 @@
 import './Table.css';
 import Tablerow from './Tablerow';
-function Table(){
-    const employee = [
-        {
-            name: "Abisha", 
-            designation: "Trainee developer", 
-            date_of_joining: "14.12.2021"
-        },
-        {
-            name: "Praba", 
-            designation: "Trainee developer", 
-            date_of_joining: "14.12.2021"
-        },
-        { 
-            name: "Reeshma", 
-            designation: "Trainee developer", 
-            date_of_joining: "14.12.2021"
-        }
-    ];
+function Table(props){
     return (
         <table>
             <thead>
@@ -28,11 +11,12 @@ function Table(){
                 </tr>
             </thead>
             <tbody>
-        
+
                 {
-                    employee.map(
+                   props.employee 
+                    .map(
                         (emp,key) => (
-                            <Tablerow key={key} name={emp.name} designation={emp.designation} doj={emp.date_of_joining} />
+                            <Tablerow key={key} name={emp.name} designation={emp.designation} doj={emp.doj} />
                         )
                     )
                 }
